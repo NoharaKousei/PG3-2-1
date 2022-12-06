@@ -13,6 +13,7 @@ void Cout(list<const char*> a)
 	}
 }
 
+
 int main()
 {
 	list<const char*> a
