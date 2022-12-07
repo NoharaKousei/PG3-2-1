@@ -1,66 +1,75 @@
-#include<stdio.h>
-#include <iostream>
-#include<list>
+#include <stdio.h>
+#include <list>
+#include <string.h>
 
 using namespace std;
 
-void Cout(list<const char*> a) 
-{
-	for (list<const char*>::iterator 
-		itr = a.begin(); itr != a.end(); ++itr)
-	{
-		cout << *itr << endl;
-	}
-}
-
-
 int main()
 {
-	list<const char*> a
+	list<const char*>stations =
 	{
-		"Tokyo","Yurakucho","shimbashi",
-		"Hamamatsucho","Tamachi","Shinagawa",
-		"Osaki", "Gotanda","Meguro","Ebisu",
-		"Shibuya","Harajuku","Yoyogi",
-		"Shinjuku","Shin - Okubo","Takadanobaba",
-		"Mejiro","Ikebukuro","Otsuka","Sugamo",
-		"Komagome","Tabata","Nippori","Uguisudani",
-		"Ueno","Okamachi","Akihabara","Kanda"
+		 "Tokyo","Kanda","Akihabara",
+		 "Okachimachi","Ueno",
+		 "Uguisudani","Nippori",
+		 "Tabata","Komagome",
+		 "Sugamo","Otsuka",
+		 "Ikebukuro","Mejiro","Takadanobaba",
+		 "Shin-Okubo","Shinjuku",
+		 "Yoyogi","Harajuku",
+		 "Shibuya","Ebisu","Meguro",
+		 "Gotanda","Osaki","Shinagawa",
+		 "Tamachi","Hamamatsucho",
+		 "Shimbashi","Yurakucho"
 	};
 
-	const char b[] = { "Nippori" };
 
+	//1970年
 	printf("---1970---\n");
 
-	Cout(a);
+	for (auto itr = stations.begin(); itr != stations.end(); itr++)
+	{
+		printf("%s\n", *itr);
+	}
 
+
+
+	//1971年
+	for (auto itr = stations.begin(); itr != stations.end(); itr++)
+	{
+		if (strcmp(*itr, "Tabata") == 0)
+		{
+			stations.insert(itr, "Nishi-Nippori");
+			break;
+		}
+	}
+
+
+
+	//2019年
 	printf("---2019---\n");
-
-	for (list<const char*>::iterator 
-		itr = a.begin(); itr != a.end(); ++itr)
+	for (auto itr = stations.begin(); itr != stations.end(); itr++)
 	{
-		if (strcmp(*itr, "Nippori") == 0)
+		printf("%s\n", *itr);
+	}
+
+
+
+	// 2020年
+	for (auto itr = stations.begin(); itr != stations.end(); itr++)
+	{
+		if (strcmp(*itr, "Tamachi") == 0)
 		{
-			itr = a.insert(itr, "Nishi-nippori");
-			++itr;
+			stations.insert(itr, "Takanawa-Geto-Way");
+			break;
 		}
 	}
 
-	Cout(a);
-
+	//2022年
 	printf("---2022---\n");
-
-	for (list<const char*>::iterator 
-		itr = a.begin(); itr != a.end(); ++itr)
+	for (auto itr = stations.begin(); itr != stations.end(); itr++)
 	{
-		if (strcmp(*itr, "Shinagawa") == 0)
-		{
-			itr = a.insert(itr, "TakanawaGateway");
-			++itr;
-		}
+		printf("%s\n", *itr);
 	}
-
-	Cout(a);
 
 	return 0;
 
